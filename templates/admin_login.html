@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Acceso Administración</h2>
+
+<form method="POST">
+  <input type="password" name="code" placeholder="Código de acceso" required>
+  <button type="submit">Entrar</button>
+</form>
+{% endblock %}

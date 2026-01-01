@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Editar Proyecto</h2>
+
+<form method="POST" enctype="multipart/form-data">
+  <input type="text" name="title" value="{{ project.title }}" required>
+
+  <textarea name="description" required>
+    {{ project.description }}
+  </textarea>
+
+  <select name="category" required>
+    {% for cat in categories %}
+      <option value="{{ cat.id }}"
+        {% if cat.id == project.category_id %}selected{% endif %}>
+        {{ cat.name }}
+      </option>
+    {% endfor %}
+  </select>
+
+  <input type="file" name="file">
+  <button type="submit">Guardar cambios</button>
+</form>
+{% endblock %}
