@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8">w
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}Adderly Construcciones{% endblock %}</title>
   <!-- Enlace a la hoja de estilos -->
@@ -13,6 +13,8 @@
 
 <header class="header">
   <div class="header-inner">
+
+
     <div class="logo-container">
       <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo Adderly">
       <div class="logo-text">
@@ -20,6 +22,16 @@
         <h2>Expertos en Obras Civiles</h2>
       </div>
     </div>
+
+   <div class="social-bar">
+    <div class="contact-item">
+        <img src="{{ url_for('static', filename='img/whatsapp.png') }}" alt="WhatsApp">
+        <span>+56 9 4798 0095</span>
+    </div>
+    <a href="https://www.instagram.com/adderlyconstrucciones" target="_blank" class="social-link">
+        <img src="{{ url_for('static', filename='img/instagram.png') }}" alt="Instagram">
+    </a>
+</div>
 
     <nav>
       <a href="{{ url_for('portfolio') }}">Inicio</a>

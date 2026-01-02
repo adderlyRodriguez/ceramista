@@ -80,9 +80,10 @@ def inject_categories():
 
 @app.route('/')
 def portfolio():
+    # Deshabilita el modo admin al entrar al Inicio
+    session.pop('admin', None) 
     projects = Project.query.all()
     return render_template('portfolio.html', projects=projects)
-
 
 @app.route('/category/<int:category_id>')
 def projects_by_category(category_id):

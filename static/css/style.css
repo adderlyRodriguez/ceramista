@@ -56,6 +56,31 @@ body {
   font-weight: 400;
   color: #ccc;
 }
+.social-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Espacio entre el teléfono y el Instagram */
+  margin-top: 10px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #f1f1f1;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.contact-item img, .social-link img {
+  height: 28px; /* Tamaño controlado de los íconos */
+  width: auto;
+  transition: transform 0.2s;
+}
+
+.social-link img:hover {
+  transform: scale(1.1); /* Efecto zoom al pasar el mouse */
+}
 
 /* Navegación estilo barra */
 nav {
