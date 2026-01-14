@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: mi-app-sqlite  # Nombre de tu app
+    env: python          # o node, go, static, etc.
+    plan: starter        # Los discos requieren plan pago (starter o superior)
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    disk:
+      name: sqlite-data
+      mountPath: /var/data
+      sizeGB: 1
