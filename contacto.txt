@@ -1,8 +1,0 @@
-PS C:\Users\verea\nuevo> git push -u origin main
-remote: You are not allowed to push code to this project.
-fatal: unable to access 'https://gitlab.com/felixjimenez/ceramista.git/': The requested URL returned error: 403
-PS C:\Users\verea\nuevo>
-
-Si no has visto esta PELÍCULA… te estás perdiendo. RECOMIENDO | DERECHO A EQUIVOCA | 2025
-
-Película favorita

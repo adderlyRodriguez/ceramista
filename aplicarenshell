@@ -1,6 +1,0 @@
-with app.app_context():
-    db.create_all()
-    db.session.add(Category(name="Porcelanato"))
-    db.session.add(Category(name="Albañilería"))
-    db.session.add(Category(name="Remodelaciones"))
-    db.session.commit()

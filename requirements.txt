@@ -1,5 +1,6 @@
 flask
 flask_sqlalchemy
+flask-migrate
 cloudinary
 python-dotenv
 gunicorn
