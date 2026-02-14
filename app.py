@@ -90,7 +90,7 @@ def inicio():
     # 1. Proyecto.category.asc(): Agrupa alfabéticamente (A-Z)
     # 2. Proyecto.date.desc(): Ordena los más recientes primero dentro del grupo
     projects = Project.query.order_by(
-    #    Project.category_id.asc(),
+        Project.category_id.asc(),
         Project.date.desc()
     ).all()
     
