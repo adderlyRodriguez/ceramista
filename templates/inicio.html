@@ -1,0 +1,35 @@
+<div class="container">
+    {% for project in projects %}
+
+        {# Detectar si la categoría cambió respecto al ítem anterior #}
+        {% if loop.first or project.category!= loop.previtem.category %}
+            
+            {# Cerrar el contenedor del grupo anterior (si no es el primero) #}
+            {% if not loop.first %}
+                </div> {% endif %}
+
+            {# Renderizar Encabezado de Categoría #}
+            <div class="category-header">
+                <h2>{{ project.category }}</h2>
+            </div>
+            
+            {# Abrir nuevo contenedor para este grupo #}
+            <div class="projects-grid">
+        {% endif %}
+
+        {# Renderizar la tarjeta del proyecto #}
+        <div class="project-card">
+            <img src="{{ project.image_url }}" alt="{{ project.title }}">
+            <h3>{{ project.title }}</h3>
+            <small>{{ project.date.strftime('%Y-%m-%d') }}</small>
+        </div>
+
+        {# Cerrar el último div pendiente al finalizar el bucle #}
+        {% if loop.last %}
+            </div>
+        {% endif %}
+
+    {% else %}
+        <p>No hay proyectos disponibles.</p>
+    {% endfor %}
+</div>

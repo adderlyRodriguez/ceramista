@@ -1,6 +1,4 @@
-flask
-flask_sqlalchemy
-flask-migrate
-cloudinary
-python-dotenv
-gunicorn
+django
+pillow 
+django-imagekit
+sqlite3

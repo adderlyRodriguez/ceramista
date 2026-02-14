@@ -1,5 +1,11 @@
 import os
 import smtplib
+from datetime import datetime
+from flask_migrate import Migrate
+#from.models import Project
+# Es crucial importar 'desc' para el ordenamiento descendente
+# from sqlalchemy import desc 
+
 from email.message import EmailMessage
 from flask import (
     Flask, render_template, request,
@@ -53,7 +59,7 @@ class Project(db.Model):
     description = db.Column(db.Text, nullable=False)
     media_url = db.Column(db.String(500), nullable=False)
     media_type = db.Column(db.String(20), nullable=False)
-
+    date = db.Column(db.DateTime, default=datetime.utcnow)  # AGREGAR ESTO
     category_id = db.Column(
         db.Integer,
         db.ForeignKey('category.id'),
@@ -73,21 +79,36 @@ with app.app_context():
 @app.context_processor
 def inject_categories():
     return dict(categories=Category.query.all())
-
+#
+migrate = Migrate(app, db)
 # --------------------------------------------------
 # RUTAS
 # --------------------------------------------------
+@app.route('/inicio')
+def inicio():
+    # CAMBIO LÓGICO:
+    # 1. Proyecto.category.asc(): Agrupa alfabéticamente (A-Z)
+    # 2. Proyecto.date.desc(): Ordena los más recientes primero dentro del grupo
+    projects = Project.query.order_by(
+    #    Project.category_id.asc(),
+        Project.date.desc()
+    ).all()
+    
+    return render_template('inicio.html', projects=projects)
+
+
 
 @app.route('/')
 def portfolio():
     # Deshabilita el modo admin al entrar al Inicio
     session.pop('admin', None) 
-    projects = Project.query.all()
+    projects = Project.query.order_by(Project.date.desc()).all()
+    # projects = Project.query.all()
     return render_template('portfolio.html', projects=projects)
 
 @app.route('/category/<int:category_id>')
 def projects_by_category(category_id):
-    projects = Project.query.filter_by(category_id=category_id).all()
+    projects = Project.query.filter_by(category_id=category_id).order_by(Project.date.desc()).all()
     return render_template('portfolio.html', projects=projects)
 
 
@@ -147,6 +168,9 @@ def edit_project(project_id):
         project.title = request.form.get('title')
         project.description = request.form.get('description')
         project.category_id = request.form.get('category')
+        if request.form.get('date'):
+            from datetime import datetime
+            project.date = datetime.strptime(request.form.get('date'), '%Y-%m-%d')
 
         file = request.files.get('file')
         if file:

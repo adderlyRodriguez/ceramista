@@ -20,6 +20,12 @@
   </select>
 
   <input type="file" name="file">
+  <div class="form-group">
+    <label for="date">Fecha del Proyecto</label>
+    <input type="date" id="date" name="date" 
+          value="{{ project.date.strftime('%Y-%m-%d') if project.date else '' }}">
+  </div>
+
   <button type="submit">Guardar cambios</button>
 </form>
 {% endblock %}
