@@ -1,4 +1,4 @@
 django
 pillow 
 django-imagekit
-sqlite3
+Migrate

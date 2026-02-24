@@ -1,7 +1,7 @@
 import os
 import smtplib
 from datetime import datetime
-#from flask_migrate import Migrate
+from flask_migrate import Migrate
 # from.models import Project
 # Es crucial importar 'desc' para el ordenamiento descendente
 # from sqlalchemy import desc 
