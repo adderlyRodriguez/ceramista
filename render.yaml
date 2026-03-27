@@ -1,11 +1,37 @@
 services:
   - type: web
-    name: mi-app-sqlite  # Nombre de tu app
-    env: python          # o node, go, static, etc.
-    plan: starter        # Los discos requieren plan pago (starter o superior)
+    name: ceramista
+    env: python
+    plan: pro
     buildCommand: pip install -r requirements.txt
+    preDeployCommand: flask db upgrade
     startCommand: gunicorn app:app
     disk:
       name: sqlite-data
       mountPath: /var/data
       sizeGB: 1
+    envVars:
+      - key: DATABASE_URL
+        value: sqlite:////var/data/db.sqlite3
+      - key: SECRET_KEY
+        sync: false
+      - key: ADMIN_CODE
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: CLOUDINARY_URL
+        sync: false
+      - key: EMAIL_HOST
+        value: smtp.gmail.com
+      - key: EMAIL_PORT
+        value: 587
+      - key: EMAIL_SENDER
+        sync: false
+      - key: EMAIL_PASSWORD
+        sync: false
+      - key: EMAIL_RECEIVER
+        sync: false
