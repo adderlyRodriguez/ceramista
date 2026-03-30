@@ -1,1 +1,28 @@
-pycache/ .DS_Store
+# Entorno virtual
+venv/
+
+# Variables de entorno (credenciales)
+.env
+
+# Base de datos local
+instance/
+*.sqlite3
+*.db
+db_encoded.txt
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+
+# Claude Code
+.claude/
+
+# Archivos de guías locales
+guia_render.html
+
+# Sistemas operativos
+.DS_Store
+Thumbs.db
