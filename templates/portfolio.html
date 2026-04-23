@@ -6,11 +6,19 @@
 <div class="projects-grid">
   {% for project in projects %}
     <div class="project-card">
-      <div class="project-media">
+      <div class="project-media media-trigger"
+           role="button" tabindex="0"
+           data-type="{{ project.media_type }}"
+           data-url="{{ project.media_url }}"
+           data-title="{{ project.title }}"
+           data-description="{{ project.description }}"
+           data-category="{{ project.category.name if project.category else '' }}"
+           data-date="{{ project.date.strftime('%Y-%m-%d') if project.date else '' }}">
         {% if project.media_type == 'image' %}
           <img src="{{ project.media_url }}" alt="{{ project.title }}" loading="lazy">
         {% else %}
-          <video src="{{ project.media_url }}" controls></video>
+          <video src="{{ project.media_url }}" muted preload="metadata"></video>
+          <span class="media-play-badge" aria-hidden="true">&#9658;</span>
         {% endif %}
       </div>
       

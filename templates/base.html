@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">w
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}Adderly Construcciones{% endblock %}</title>
   <!-- Enlace a la hoja de estilos -->
@@ -73,6 +73,19 @@
   <p>© 2025 Construcciones Adderly. Todos los derechos reservados.</p>
   <p>Calidad y confianza en cada proyecto.</p>
 </footer>
+
+<div id="lightbox" class="lightbox" hidden aria-hidden="true" role="dialog" aria-modal="true">
+  <button type="button" class="lightbox-close" aria-label="Cerrar">&times;</button>
+  <div class="lightbox-content" role="document">
+    <div class="lightbox-media"></div>
+    <div class="lightbox-info">
+      <h3 class="lightbox-title"></h3>
+      <p class="lightbox-meta"></p>
+      <p class="lightbox-description"></p>
+    </div>
+  </div>
+</div>
+<script src="{{ url_for('static', filename='js/lightbox.js') }}"></script>
 
 </body>
 </html>
