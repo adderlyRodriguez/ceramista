@@ -12,4 +12,4 @@ RUN mkdir -p /var/data
 
 EXPOSE 8000
 
-CMD ["sh", "-c", "flask db upgrade && gunicorn app:app --bind 0.0.0.0:8000 --workers 2"]
+CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:8000", "--workers", "2"]
